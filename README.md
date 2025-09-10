@@ -33,7 +33,9 @@ If You Aren't Familiar with [Huffman Codding](https://en.wikipedia.org/wiki/Huff
 
 ![RegularHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/HTREEnew.png)
 
-### Difference in Huffman Tree : 
+### Difference in Speed : 
+
+The Speed of Both Operations in The Same Environment in the C, JS and TS Programming Languages ​​is ***Almost Equal***.
 
 ## License
 
