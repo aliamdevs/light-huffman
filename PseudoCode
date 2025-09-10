@@ -1,0 +1,218 @@
+// =============================
+// PACKING FUNCTIONS
+// =============================
+
+FUNCTION binary_nbit(e, n):
+    num = convert e to number
+    binaryString = binary(num)
+    WHILE length(binaryString) < n:
+        binaryString = "0" + binaryString
+    RETURN binaryString
+
+FUNCTION settingcode(char):
+    code = ASCII(char)
+    IF char == ' ': RETURN 0
+    IF '0' <= char <= '9': RETURN code - '0' + 1
+    IF 'A' <= char <= 'Z': RETURN code - 'A' + 11
+    IF 'a' <= char <= 'z': RETURN code - 'a' + 37
+    ELSE RETURN null
+
+FUNCTION settingchar(code):
+    IF code == 0: RETURN " "
+    IF 1 <= code <= 10: RETURN char(code + 47)    // '0'-'9'
+    IF 11 <= code <= 36: RETURN char(code + 54)   // 'A'-'Z'
+    IF 37 <= code <= 62: RETURN char(code + 60)   // 'a'-'z'
+    ELSE RETURN null
+
+// =============================
+// SPACIAL ORDER FUNCTION
+// =============================
+
+FUNCTION countSpecialOrder(n):
+    m = CEIL(SQRT(n))
+    results = []
+    FOR i = 0 TO (m*m - 1):
+        digit1 = FLOOR(i/m)
+        digit2 = i % m
+        numStr = digit1 + digit2 as string
+        sum = digit1 + digit2
+        results.push({num:numStr, sum:sum, d1:digit1, d2:digit2})
+    SORT results by (sum, then d1, then d2)
+    RETURN [item.num for item in results]
+
+// =============================
+// HUFFMAN CODING
+// =============================
+
+CLASS HuffmanNode:
+    char
+    frequency
+    left
+    right
+
+CLASS HuffmanCoding:
+    root
+    codes = {}
+    reverseCodes = {}
+
+    FUNCTION buildFrequencyMap(text):
+        freqMap = {}
+        FOR char in text:
+            freqMap[char]++
+        RETURN freqMap
+
+    FUNCTION buildHuffmanTree(freqMap):
+        nodes = [Node(char,freq) for each char,freq]
+        WHILE length(nodes) > 1:
+            sort nodes ascending by frequency
+            left = nodes.popLowest()
+            right = nodes.popLowest()
+            newNode = Node(null, left.freq + right.freq)
+            newNode.left = left
+            newNode.right = right
+            nodes.push(newNode)
+        root = nodes[0]
+        RETURN root
+
+    FUNCTION generateCodes(node, currentCode=""):
+        IF node == null: RETURN
+        IF node.char != null:
+            codes[node.char] = currentCode
+            reverseCodes[currentCode] = node.char
+            RETURN
+        generateCodes(node.left, currentCode+"0")
+        generateCodes(node.right, currentCode+"1")
+
+    FUNCTION encode(text):
+        freqMap = buildFrequencyMap(text)
+        root = buildHuffmanTree(freqMap)
+        generateCodes(root, "")
+        encoded = ""
+        FOR char in text:
+            encoded += codes[char]
+        RETURN {encodedText: encoded, codes: codes, frequencyMap: freqMap}
+
+    FUNCTION decode(encodedText, codes):
+        reverseCodes = {}
+        FOR char, code in codes:
+            reverseCodes[code] = char
+        current = ""
+        decoded = ""
+        FOR bit in encodedText:
+            current += bit
+            IF current in reverseCodes:
+                decoded += reverseCodes[current]
+                current = ""
+        RETURN decoded
+
+// =============================
+// LIGHT HUFFMAN ENCODE
+// =============================
+
+FUNCTION LightHuffmanEncode(str):
+    alphabets = unique valid chars in str
+    counts = [frequency of each alphabet]
+    SOsettings = binary_nbit(length(alphabets),6)
+
+    paired = zip(alphabets, counts)
+    sort paired by frequency DESC
+
+    spacialordermap = {}
+    FOR each (char,freq) in paired:
+        SOsettings += binary_nbit(settingcode(char),6)
+        spacialordermap[char] = freq
+
+    SOWrite = [char from paired]
+    SORead = countSpecialOrder(length(alphabets))
+
+    body = ""
+    FOR char in str:
+        body += SORead[INDEX_OF(SOWrite,char)]
+
+    Huffman = new HuffmanCoding()
+    encodedResult = Huffman.encode(body)
+    body = encodedResult.encodedText
+
+    tmpbase = CEIL(SQRT(length(alphabets)))
+    Huffsetting = binary_nbit(tmpbase-1,3)
+
+    FOR i=0 TO tmpbase-1:
+        tmp = encodedResult.codes[string(i)]
+        Huffsetting = tmp + binary_nbit(length(tmp),3) + Huffsetting
+
+    RETURN {
+        data: SOsettings + body + Huffsetting,
+        sizeofcode: length(body),
+        sizeofmemory: length(SOsettings + Huffsetting),
+        huffmanfrequencymap: encodedResult.frequencyMap,
+        spacialorderfrequencymap: spacialordermap
+    }
+
+// =============================
+// LIGHT HUFFMAN DECODE
+// =============================
+
+FUNCTION LightHuffmanDecode(code):
+    SOLen = int(code[0:6], base=2)
+    SOSettings = code[6 : (SOLen*6)+6]
+    SOmap = []
+    FOR i=0 TO SOLen-1:
+        SOmap.push(settingchar(int(SOSettings[6*i:6*(i+1)],2)))
+
+    SOCodes = countSpecialOrder(length(SOmap))
+
+    HLen = int(last 3 bits of code, base=2) + 1
+    p = length(code) - 3
+    j = 0
+    HSetting = {}
+    WHILE HLen > 0:
+        tmp = int(code[p-3:p],2)
+        p -= 3
+        HSetting[string(j)] = code[p-tmp:p]
+        p -= tmp
+        HLen--
+        j++
+
+    HuffmanCoded = code[(SOLen*6)+6 : p]
+    Huffman = new HuffmanCoding()
+    decodedResult = Huffman.decode(HuffmanCoded,HSetting)
+
+    result = ""
+    FOR i=0 TO (length(decodedResult)/2 - 1):
+        TC = decodedResult[2*i : 2*(i+1)]
+        result += SOmap[INDEX_OF(SOCodes,TC)]
+
+    RETURN result
+
+// =============================
+// FLASH STORAGE (EEPROM-LIKE)
+// =============================
+
+MEMORY[EEPROM_SIZE]
+
+FUNCTION storeBits(bitString, startAddress):
+    bitIndex = 0
+    addr = startAddress
+    WHILE bitIndex < length(bitString):
+        byte = 0
+        FOR i=0 TO 7 AND bitIndex < length(bitString):
+            IF bitString[bitIndex] == '1':
+                byte |= (1 << (7-i))
+            bitIndex++
+        MEMORY[addr] = byte
+        addr++
+    RETURN addr
+
+FUNCTION loadBits(startAddress, bitLength):
+    result = ""
+    addr = startAddress
+    totalBytes = CEIL(bitLength/8)
+    FOR b=0 TO totalBytes-1:
+        data = MEMORY[addr]
+        addr++
+        FOR i=0 TO 7 AND (b*8+i)<bitLength:
+            IF (data & (1<<(7-i))) != 0:
+                result += "1"
+            ELSE:
+                result += "0"
+    RETURN result
