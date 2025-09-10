@@ -23,13 +23,13 @@ If You Aren't Familiar with [Huffman Codding](https://en.wikipedia.org/wiki/Huff
 > With Light Huffman Final , Comperesion Size is → 4533 bits and **When You Want to Decode You Don't Need Any Thing** .
 
 ### Difference in Huffman Tree : 
-***The Light Huffman Tree :***\
---
+***The Light Huffman Tree :***
+\--
 
 ![LightHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/LHTREEnew.png)
 
-***The Regular Huffman Tree :***\
---
+***The Regular Huffman Tree :***
+\--
 
 ![RegularHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/HTREEnew.png)
 
