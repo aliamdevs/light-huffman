@@ -91,6 +91,31 @@ decoded = LightHuffmanDecode(retrieved);
 LCD_Print(decoded);
 ```
 
+### 3. Storage of Large Text
+
+- Compress sensor logs, error messages, or documents before saving to SD card / Flash.
+- Great for IoT devices where storage and transmission are expensive.
+- Benefit: Up to ~40% less memory usage.
+
+### 4. Wireless / IoT Devices
+
+- Transmit compressed payloads via LoRa, NRF24L01, ZigBee, or Bluetooth Low Energy.
+- Smaller packets → lower latency & less power consumption.
+
+### 5. Firmware Assets Compression
+
+- Store large strings (menus, debug messages, JSON configs) compressed in firmware.
+- Decompress only when needed.
+- Benefit: Saves program memory, especially in ATmega32, STM32, ESP32, PIC MCUs.
+
+## Faults 
+ 
+ - In Encoding Small Texts By ***Light Huffman*** Might The Result Don't Reduce Size Compare with Raw ASCII Even With Less Repetition Might Increase The Size . In This Case The Regular Huffman Works Better .
+
+ - This Code Support 63 Char Contain ***Space , A-Z , a-z , 0-9*** & Symbols Will Be Missed After Encode & Decode . In This Case That You Use A Lot Of Symbols & You Can't Convert it To Letters , Regular Huffman is Better
+
+### Of Course, This Project is Version ***1.0*** and I Hope to Fix these Shortcomings in Future, Higher Versions.
+### Thank you for your attention to this repository.
 ## License
 
 [Apache 2.0 License](./LICENSE)
