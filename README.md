@@ -42,13 +42,22 @@ The Speed of Both Operations in The Same Environment in the C, JS and TS Program
 > [Check Out The Pseudocode Here.](./PseudoCode)
 
 ***Encode :***
-- Create A Frequency Map To Use In Special Order
+- Create A Frequency Map To Use In Special Order.
 - Convert The String To The Base Of The Nearest Square Root Of The Number Of Letter Variations **By Special Order**.
 - **Special Order** Is a Sorting of Two-Letter bases based on the Sum Of Two Numbers & Then The Numbers Alone.
-- Convert Frequency Map To A Binary Setting Code
-- Encode With Huffman Now 
-- Convert Huffman Codes To A Binary Setting Code 
-- Return Result = *FrequencyMapSetting* + *EncodedCode* + *HuffmanCodesSetting*
+- Convert Frequency Map To A Binary Setting Code.
+- Encode With Huffman Now .
+- Convert Huffman Codes To A Binary Setting Code .
+- Return Result = *FrequencyMapSetting* + *EncodedCode* + *HuffmanCodesSetting* .
+
+***Decode :***
+- Split *FrequencyMapSetting* , *EncodedCode* , *HuffmanCodesSetting* Sections .
+- Decode *HuffmanCodesSetting* Section .
+- Decode *EncodedCode* By Huffman with *HuffmanCodesSetting* .
+- Separate The Huffman Decoded Two By Two .
+- Decode *FrequencyMapSetting* Section .
+- Decode By ***Special Order*** with *FrequencyMapSetting*
+- Return The ***Encoded Text***
 
 ## License
 
