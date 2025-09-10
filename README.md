@@ -41,6 +41,11 @@ The Speed of Both Operations in The Same Environment in the C, JS and TS Program
 
 > [Check Out The Pseudocode Here.](./PseudoCode)
 
+***Encode :***
+- Convert A String To The Base Of The Nearest Square Root Of The Number Of Letter Variations.
+- Convert A String To The Base Of The Nearest Square Root Of The Number Of Letter Variations.
+- Convert A String To The Base Of The Nearest Square Root Of The Number Of Letter Variations.
+
 ## License
 
 [Apache 2.0 License](./LICENSE)
