@@ -48,7 +48,7 @@ The Speed of Both Operations in The Same Environment in the C, JS and TS Program
 - Convert Frequency Map To A Binary Setting Code
 - Encode With Huffman Now 
 - Convert Huffman Codes To A Binary Setting Code 
-- Return Result = FrequencyMapSetting + EncodedCode + HuffmanCodesSetting
+- Return Result = ***FrequencyMapSetting*** + ***EncodedCode*** + ***HuffmanCodesSetting***
 
 ## License
 
