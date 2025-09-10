@@ -25,7 +25,7 @@ If You Aren't Familiar with [Huffman Codding](https://en.wikipedia.org/wiki/Huff
 ### Difference in Huffman Tree : 
 ***The Light Huffman Tree :***
 \
-![LightHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/LHTREE.png){width: 200px;}
+![LightHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/LHTREE.png)
 \
 ***The Regular Huffman Tree :***
 \
