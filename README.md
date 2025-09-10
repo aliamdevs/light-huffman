@@ -37,6 +37,10 @@ If You Aren't Familiar with [Huffman Codding](https://en.wikipedia.org/wiki/Huff
 
 The Speed of Both Operations in The Same Environment in the C, JS and TS Programming Languages ​​is ***Almost Equal***.
 
+## Algorithm 
+
+> [Check Out The Pseudocode Here.](./PseudoCode)
+
 ## License
 
 [Apache 2.0 License](./LICENSE)
