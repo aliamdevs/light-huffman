@@ -2,7 +2,7 @@
 
 ## Introduction
 
-***Hi I'm Ali*** & This Project is **Light** Memory-Based **Huffman** Compression./
+***Hi I'm Ali*** & This Project is **Light** Memory-Based **Huffman** Compression.\
 If You Aren't Familiar with [Huffman Codding](https://en.wikipedia.org/wiki/Huffman_coding)
 
 ## Huffman Vs Light Huffman 
@@ -24,9 +24,9 @@ If You Aren't Familiar with [Huffman Codding](https://en.wikipedia.org/wiki/Huff
 
 ### Difference in Huffman Tree : 
 ***The Light Huffman Tree : ***
-![LightHuffmanTree](https://github.com/aliamdevs/light-huffman/temp/LHTREE.png)
+![LightHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/LHTREE.png)
 ***The Regular Huffman Tree : ***
-![RegularHuffmanTree](https://github.com/aliamdevs/light-huffman/temp/HTREE.png)
+![RegularHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/HTREE.png)
 ## License
 
 [Apache 2.0 License](./LICENSE)
