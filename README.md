@@ -25,11 +25,11 @@ If You Aren't Familiar with [Huffman Codding](https://en.wikipedia.org/wiki/Huff
 ### Difference in Huffman Tree : 
 ***The Light Huffman Tree :***
 \
-![LightHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/LHTREE.png)
+![LightHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/LHTREEnew.png)
 \
 ***The Regular Huffman Tree :***
 \
-![RegularHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/HTREE.png)
+![RegularHuffmanTree](https://github.com/aliamdevs/light-huffman/blob/main/temp/HTREEnew.png)
 \
 ## License
 
