@@ -42,9 +42,13 @@ The Speed of Both Operations in The Same Environment in the C, JS and TS Program
 > [Check Out The Pseudocode Here.](./PseudoCode)
 
 ***Encode :***
-- Convert A String To The Base Of The Nearest Square Root Of The Number Of Letter Variations.
-- Convert A String To The Base Of The Nearest Square Root Of The Number Of Letter Variations.
-- Convert A String To The Base Of The Nearest Square Root Of The Number Of Letter Variations.
+- Create A Frequency Map To Use In Special Order
+- Convert The String To The Base Of The Nearest Square Root Of The Number Of Letter Variations **By Special Order**.
+- **Special Order** Is a Sorting of Two-Letter bases based on the Sum Of Two Numbers & Then The Numbers Alone.
+- Convert Frequency Map To A Binary Setting Code
+- Encode With Huffman Now 
+- Convert Huffman Codes To A Binary Setting Code 
+- Return Result = FrequencyMapSetting + EncodedCode + HuffmanCodesSetting
 
 ## License
 
