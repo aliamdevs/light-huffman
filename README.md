@@ -108,14 +108,15 @@ LCD_Print(decoded);
 - Decompress only when needed.
 - Benefit: Saves program memory, especially in ATmega32, STM32, ESP32, PIC MCUs.
 
-## Faults 
+## Issues 
  
  - In Encoding Small Texts By ***Light Huffman*** Might The Result Don't Reduce Size Compare with Raw ASCII Even With Less Repetition Might Increase The Size . In This Case The Regular Huffman Works Better .
 
  - This Code Support 63 Char Contain ***Space , A-Z , a-z , 0-9*** & Symbols Will Be Missed After Encode & Decode . In This Case That You Use A Lot Of Symbols & You Can't Convert it To Letters , Regular Huffman is Better
 
-### Of Course, This Project is Version ***1.0*** and I Hope to Fix these Shortcomings in Future, Higher Versions.
-### Thank you for your attention to this repository.
+### Of Course, This Project is Version 1.0 and I Hope to Fix these Shortcomings in Future, Higher Versions.
+### Thank You For Your Attention to This Repository.
+
 ## License
 
 [Apache 2.0 License](./LICENSE)
