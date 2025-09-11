@@ -37,7 +37,7 @@ export function LightHuffmanEncode(str: string): EncodeResult {
 
     // Collect unique characters and their frequencies
     for (const char of str) {
-        if (!alphabets.includes(char) && settingcode(char) !== null) {
+        if (!(alphabets as any).includes(char) && settingcode(char) !== null) {
             alphabets.push(char);
             numchar.push(0);
         }
